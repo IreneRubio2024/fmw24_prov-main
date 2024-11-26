@@ -7,14 +7,15 @@ async function getPhotos() {
   const response = await fetch(" https://jsonplaceholder.typicode.com/photos");
   const dataPhotos = await response.json();
   dataPhotos.forEach((photo) => {
-    const photoDiv = document.createElement("div");
-    section.classList.add("photo");
+    const photoEl = document.createElement("img");
+    photoEl.src = photo.url;
+    photoEl.alt = "photo";
 
-    const title = document.createElement("div");
+    const title = document.createElement("h2");
     title.classList.add("title");
     title.textContent = photo.title;
 
-    photoDiv.appendChild(title);
+    photoEl.appendChild(title);
     title.addEventListener("click");
 
     const seeTitle = promt("title");
